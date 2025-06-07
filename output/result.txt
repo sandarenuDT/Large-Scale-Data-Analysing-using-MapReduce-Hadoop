@@ -1,0 +1,14 @@
+	273
+April	41301
+August	33012
+December	18945
+February	18259
+January	37284
+July	30886
+June	18380
+March	19142
+May	28331
+Month	1
+November	18416
+October	19126
+September	18655
