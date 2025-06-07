@@ -9,7 +9,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 public class RetailDriver {
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
-        Job job = Job.getInstance(conf, "Retail Category Count");
+        Job job = Job.getInstance(conf, "Retail Month Count");
 
         job.setJarByClass(RetailDriver.class);
         job.setMapperClass(RetailMapper.class);
