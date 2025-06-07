@@ -12,19 +12,15 @@ This guide provides step-by-step instructions on how to set up and run **Apache 
 - Memory: Minimum 10GB RAM
 - Disk Space: Minimum 30GB of available space
 
-## Required Software
-
-- Java Development Kit (JDK)
-
 # Download and Installation
 
 ## Step 1: Download Hadoop
 
-Download Hadoop from their official website and unzip the file. Used Hadoop 3.2.4.
+Download Hadoop. Used Hadoop 3.2.4.
 
 ## Step 2: Install Java JDK
 
-Java JDK is required to run Hadoop, so if it hasn't been installed, it needs to be installed. It is required by Oracle that users sign up and log in to download it.
+Java JDK is required to run Hadoop. It is required by Oracle that users sign up and log in to download it.
 
 # Environment Configuration
 
@@ -41,15 +37,11 @@ Java JDK is required to run Hadoop, so if it hasn't been installed, it needs to 
       - Variable name: JAVA_HOME
       - Variable value: Path to your JDK installation (C:\Java\jdk-1.8\bin)
         
-![JAVA_HOME Screenshot](images/JAVA_HOME_setup.png)
-
 ## HADOOP_HOME environment variable
 1. Under User variables, click New
 2. Set the following:
       - Variable name: HADOOP_HOME
       - Variable value: Path to where you extracted Hadoop (C:\hadoop\bin)
-
-![HADOOP_HOME Screenshot](images/HADOOP_HOME_setup.png)
 
 ## PATH environment variable
 To ensure Hadoop and Java commands run smoothly from any terminal window, add the following directories to your system’s PATH environment variable:
@@ -255,8 +247,8 @@ stop-all.cmd
 
 ## Running MapReduce Jobs
 
-Once the Hadoop environment is ready, follow these steps to run the hashtag counter MapReduce job:
-This command compiles your MapReduce source files (HashtagMapper.java, HashtagReducer.java, and HashtagDriver.java) and stores the compiled .class files in the classes directory.
+Once the Hadoop environment is ready, follow these steps to run the Monthly Transaction Counter in retail MapReduce job:
+This command compiles your MapReduce source files (RetailMapper.java, RetailReducer.java, and RetailDriver.java) and stores the compiled .class files in the classes directory.
 Run this in the VS Code terminal
 
 ### Step 1: Compile Java Files
@@ -266,7 +258,7 @@ $hadoopJars = (Get-ChildItem -Recurse "C:\hadoop\share\hadoop" -Include *.jar | 
 This PowerShell command gathers all .jar files inside your Hadoop directory (recursively), then joins them into a single string with ; separators (required for Java classpath).
 
 ```xml
-javac -classpath "$hadoopJars" -d classes src\HashtagMapper.java src\HashtagReducer.java src\HashtagDriver.java
+javac -classpath "$hadoopJars" -d classes src\RetailMapper.java src\RetailReducer.java src\RetailDriver.java
 ```
 This compiles the three Java source files and places the compiled .class files inside a folder called classes.
 
@@ -274,7 +266,7 @@ This compiles the three Java source files and places the compiled .class files i
 ### Step 2: Create a JAR File
 
 ```xml
-jar -cvf hashtag-count.jar -C classes .
+jar -cvf retail-month-count.jar -C classes .
 ```
 
 ### Step 3: Upload Input to HDFS
@@ -300,13 +292,13 @@ This creates a new input directory in HDFS to hold the data file.
 
 4. Upload the input CSV file to HDFS
    ```xml
-   hdfs dfs -put -f input/movie_tweet_sample.csv /user/DELL/input/
+   hdfs dfs -put -f input/new_retail_data.csv /user/DELL/input/
 
-This uploads your local CSV file (movie_tweet_sample.csv) from the input folder in your local project into the HDFS input directory.
+This uploads your local CSV file (new_retail_data.csv) from the input folder in your local project into the HDFS input directory.
 
 #### Final HDFS Structure:
  ```xml
-/user/DELL/input/movie_tweet_sample.csv
+/user/DELL/input/new_retail_data.csv
 ```
 
 ### Step 4: List content in the input directory
@@ -318,7 +310,7 @@ hdfs dfs -ls /user/DELL/input
 ### Step 5: Start the Job
 
 ```xml
-hadoop jar hashtag-count.jar HashtagDriver /user/DELL/input/movie_tweet_sample.csv /user/DELL/output
+hadoop jar retail-month-count.jar RetailDriver /user/DELL/input/new_retail_data.csv /user/DELL/output
 ```
 
 ### Step 6: List content in the output directory
@@ -362,22 +354,22 @@ stop-all.cmd
 
 ## Final folder structure after compilation:
 ```xml
-MOVIEHASHTAGMAPREDUCE/
-├── analysis/                    
-│   └── visualize_results.py    
-│   └──plots/     
-│   	└── top_hashtags.png             
-├── input/
-│   └── movie_tweet_sample.csv
-├── output/
-│   └── result.txt              
-├── src/
-│   ├── HashtagDriver.java
-│   ├── HashtagMapper.java
-│   └── HashtagReducer.java
+RETAIL_MAP/
 ├── classes/
-│   ├── HashtagDriver.class
-│   ├── HashtagDriver.class
-│   └── HashtagDriver.class
-└── hashtag-count.jar
+│   ├── RetailDriver.class
+│   ├── RetailDriver.class
+│   └── RetailDriver.class         
+├── input/
+│   └── new_retail_data.csv
+├── output/
+│   ├── result_analysis.py
+│   ├── result.txt
+│   └── transactions_plot.png  
+            
+├── src/
+│   ├── RetailDriver.java
+│   ├── RetailMapper.java
+│   └── RetailReducer.java
+
+└── retail-month-count.jar
 ```
