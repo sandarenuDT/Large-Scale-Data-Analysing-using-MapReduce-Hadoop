@@ -255,8 +255,8 @@ stop-all.cmd
 
 ## Running MapReduce Jobs
 
-Once the Hadoop environment is ready, follow these steps to run the hashtag counter MapReduce job:
-This command compiles your MapReduce source files (HashtagMapper.java, HashtagReducer.java, and HashtagDriver.java) and stores the compiled .class files in the classes directory.
+Once the Hadoop environment is ready, follow these steps to run the Monthly Transaction Counter in retail MapReduce job:
+This command compiles your MapReduce source files (RetailMapper.java, RetailReducer.java, and RetailDriver.java) and stores the compiled .class files in the classes directory.
 Run this in the VS Code terminal
 
 ### Step 1: Compile Java Files
@@ -266,7 +266,7 @@ $hadoopJars = (Get-ChildItem -Recurse "C:\hadoop\share\hadoop" -Include *.jar | 
 This PowerShell command gathers all .jar files inside your Hadoop directory (recursively), then joins them into a single string with ; separators (required for Java classpath).
 
 ```xml
-javac -classpath "$hadoopJars" -d classes src\HashtagMapper.java src\HashtagReducer.java src\HashtagDriver.java
+javac -classpath "$hadoopJars" -d classes src\RetailMapper.java src\RetailReducer.java src\RetailDriver.java
 ```
 This compiles the three Java source files and places the compiled .class files inside a folder called classes.
 
