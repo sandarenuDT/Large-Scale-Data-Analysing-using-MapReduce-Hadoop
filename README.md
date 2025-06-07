@@ -274,7 +274,7 @@ This compiles the three Java source files and places the compiled .class files i
 ### Step 2: Create a JAR File
 
 ```xml
-jar -cvf hashtag-count.jar -C classes .
+jar -cvf retail-month-count.jar -C classes .
 ```
 
 ### Step 3: Upload Input to HDFS
@@ -302,11 +302,11 @@ This creates a new input directory in HDFS to hold the data file.
    ```xml
    hdfs dfs -put -f input/movie_tweet_sample.csv /user/DELL/input/
 
-This uploads your local CSV file (movie_tweet_sample.csv) from the input folder in your local project into the HDFS input directory.
+This uploads your local CSV file (new_retail_data.csv) from the input folder in your local project into the HDFS input directory.
 
 #### Final HDFS Structure:
  ```xml
-/user/DELL/input/movie_tweet_sample.csv
+/user/DELL/input/new_retail_data.csv
 ```
 
 ### Step 4: List content in the input directory
@@ -318,7 +318,7 @@ hdfs dfs -ls /user/DELL/input
 ### Step 5: Start the Job
 
 ```xml
-hadoop jar hashtag-count.jar HashtagDriver /user/DELL/input/movie_tweet_sample.csv /user/DELL/output
+hadoop jar retail-month-count.jar RetailDriver /user/DELL/input/new_retail_data.csv /user/DELL/output
 ```
 
 ### Step 6: List content in the output directory
@@ -368,16 +368,16 @@ MOVIEHASHTAGMAPREDUCE/
 │   └──plots/     
 │   	└── top_hashtags.png             
 ├── input/
-│   └── movie_tweet_sample.csv
+│   └── new_retail_data.csv
 ├── output/
 │   └── result.txt              
 ├── src/
-│   ├── HashtagDriver.java
-│   ├── HashtagMapper.java
-│   └── HashtagReducer.java
+│   ├── RetailDriver.java
+│   ├── RetailMapper.java
+│   └── RetailReducer.java
 ├── classes/
-│   ├── HashtagDriver.class
-│   ├── HashtagDriver.class
-│   └── HashtagDriver.class
-└── hashtag-count.jar
+│   ├── RetailDriver.class
+│   ├── RetailDriver.class
+│   └── RetailDriver.class
+└── retail-month-count.jar
 ```
