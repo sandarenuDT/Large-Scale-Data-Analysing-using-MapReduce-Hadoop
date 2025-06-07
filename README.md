@@ -362,22 +362,22 @@ stop-all.cmd
 
 ## Final folder structure after compilation:
 ```xml
-Retail_map/
-├── analysis/                    
-│   └── visualize_results.py    
-│   └──plots/     
-│   	└── top_transaction_months.png             
+RETAIL_MAP/
+├── classes/
+│   ├── RetailDriver.class
+│   ├── RetailDriver.class
+│   └── RetailDriver.class         
 ├── input/
 │   └── new_retail_data.csv
 ├── output/
-│   └── result.txt              
+│   ├── result_analysis.py
+│   ├── result.txt
+│   └── transactions_plot.png  
+            
 ├── src/
 │   ├── RetailDriver.java
 │   ├── RetailMapper.java
 │   └── RetailReducer.java
-├── classes/
-│   ├── RetailDriver.class
-│   ├── RetailDriver.class
-│   └── RetailDriver.class
+
 └── retail-month-count.jar
 ```
