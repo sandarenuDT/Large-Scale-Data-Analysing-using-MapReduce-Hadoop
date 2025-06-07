@@ -300,7 +300,7 @@ This creates a new input directory in HDFS to hold the data file.
 
 4. Upload the input CSV file to HDFS
    ```xml
-   hdfs dfs -put -f input/movie_tweet_sample.csv /user/DELL/input/
+   hdfs dfs -put -f input/new_retail_data.csv /user/DELL/input/
 
 This uploads your local CSV file (new_retail_data.csv) from the input folder in your local project into the HDFS input directory.
 
@@ -362,11 +362,11 @@ stop-all.cmd
 
 ## Final folder structure after compilation:
 ```xml
-MOVIEHASHTAGMAPREDUCE/
+Retail_map/
 ├── analysis/                    
 │   └── visualize_results.py    
 │   └──plots/     
-│   	└── top_hashtags.png             
+│   	└── top_transaction_months.png             
 ├── input/
 │   └── new_retail_data.csv
 ├── output/
