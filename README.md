@@ -12,19 +12,15 @@ This guide provides step-by-step instructions on how to set up and run **Apache 
 - Memory: Minimum 10GB RAM
 - Disk Space: Minimum 30GB of available space
 
-## Required Software
-
-- Java Development Kit (JDK)
-
 # Download and Installation
 
 ## Step 1: Download Hadoop
 
-Download Hadoop from their official website and unzip the file. Used Hadoop 3.2.4.
+Download Hadoop. Used Hadoop 3.2.4.
 
 ## Step 2: Install Java JDK
 
-Java JDK is required to run Hadoop, so if it hasn't been installed, it needs to be installed. It is required by Oracle that users sign up and log in to download it.
+Java JDK is required to run Hadoop. It is required by Oracle that users sign up and log in to download it.
 
 # Environment Configuration
 
@@ -41,15 +37,11 @@ Java JDK is required to run Hadoop, so if it hasn't been installed, it needs to 
       - Variable name: JAVA_HOME
       - Variable value: Path to your JDK installation (C:\Java\jdk-1.8\bin)
         
-![JAVA_HOME Screenshot](images/JAVA_HOME_setup.png)
-
 ## HADOOP_HOME environment variable
 1. Under User variables, click New
 2. Set the following:
       - Variable name: HADOOP_HOME
       - Variable value: Path to where you extracted Hadoop (C:\hadoop\bin)
-
-![HADOOP_HOME Screenshot](images/HADOOP_HOME_setup.png)
 
 ## PATH environment variable
 To ensure Hadoop and Java commands run smoothly from any terminal window, add the following directories to your system’s PATH environment variable:
